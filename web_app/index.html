@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="ScamCall Shield — kiểm tra tin nhắn, cuộc gọi, ảnh, video và tệp đáng ngờ ngay trên trình duyệt. Riêng tư mặc định." />
+  <title>ScamCall Shield</title>
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/views.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <a class="scs-skip" href="#scs-main" data-i18n="nav.skip">Bỏ qua, đến nội dung chính</a>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="scs-header">
+    <div class="scs-header__inner scs-container">
+      <a class="scs-brand" href="#/home" aria-label="ScamCall Shield">
+        <svg class="scs-brand__logo" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+          <path d="M16 2 4 6v8c0 7.4 5 13.4 12 16 7-2.6 12-8.6 12-16V6L16 2z" fill="url(#shieldg)"/>
+          <path d="M11 16.5l3.2 3.2L21 12.8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs><linearGradient id="shieldg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#2F80ED"/><stop offset="1" stop-color="#0B2447"/>
+          </linearGradient></defs>
+        </svg>
+        <span class="scs-brand__name" data-i18n="app.name">ScamCall Shield</span>
+      </a>
+
+      <nav class="scs-nav" aria-label="Main">
+        <a href="#/analyze" data-route="analyze" data-i18n="nav.analyze">Phân tích</a>
+        <a href="#/learn" data-route="learn" data-i18n="nav.learn">Học nhanh</a>
+        <a href="#/history" data-route="history" data-i18n="nav.history">Lịch sử</a>
+        <a href="#/about" data-route="about" data-i18n="nav.about">Về model</a>
+      </nav>
+
+      <div class="scs-header__actions">
+        <div class="scs-lang" role="group" aria-label="Language">
+          <button type="button" class="scs-lang__btn" data-lang="vi">VI</button>
+          <button type="button" class="scs-lang__btn" data-lang="en">EN</button>
+        </div>
+        <button type="button" id="scs-family-toggle" class="scs-pill-btn" aria-pressed="false">
+          <span aria-hidden="true">👵</span><span data-i18n="family.label">Chế độ Gia đình</span>
+        </button>
+        <button type="button" id="scs-theme-toggle" class="scs-icon-btn" data-i18n-aria="theme.toDark" aria-label="Chuyển nền tối">
+          <svg class="scs-icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M19.8 4.2l-2.1 2.1M6.3 17.7l-2.1 2.1"/></g></svg>
+          <svg class="scs-icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="scs-main" class="scs-main">
+
+    <!-- ===================== HOME ===================== -->
+    <section id="view-home" class="scs-view scs-view--home" data-view="home">
+      <div class="scs-hero scs-container">
+        <div class="scs-hero__copy">
+          <p class="scs-hero__kicker" data-i18n="hero.kicker">Chạy hoàn toàn trên trình duyệt của bạn</p>
+          <h1 class="scs-hero__title">
+            <span data-i18n="hero.title.1">Tin nhắn này</span>
+            <span class="scs-hero__title-accent" data-i18n="hero.title.2">đang thao túng bạn?</span>
+          </h1>
+          <p class="scs-hero__sub" data-i18n="hero.sub"></p>
+          <div class="scs-hero__cta">
+            <a class="scs-btn scs-btn--primary scs-btn--lg" href="#/analyze" data-i18n="hero.cta">Phân tích ngay</a>
+            <button type="button" class="scs-btn scs-btn--ghost scs-btn--lg" id="scs-hero-demo" data-i18n="hero.demo">Xem ví dụ mẫu</button>
+          </div>
+          <ul class="scs-hero__badges">
+            <li class="scs-hbadge"><span class="scs-hbadge__t" data-i18n="hero.badge.local"></span><span class="scs-hbadge__d" data-i18n="hero.badge.local.d"></span></li>
+            <li class="scs-hbadge"><span class="scs-hbadge__t" data-i18n="hero.badge.multi"></span><span class="scs-hbadge__d" data-i18n="hero.badge.multi.d"></span></li>
+            <li class="scs-hbadge"><span class="scs-hbadge__t" data-i18n="hero.badge.bi"></span><span class="scs-hbadge__d" data-i18n="hero.badge.bi.d"></span></li>
+          </ul>
+        </div>
+
+        <!-- signature specimen card -->
+        <div class="scs-specimen" aria-hidden="true">
+          <div class="scs-specimen__scan"></div>
+          <div class="scs-specimen__head">
+            <span class="scs-specimen__label" data-i18n="hero.spec.label">Mẫu đang phân tích</span>
+            <span class="scs-specimen__from" data-i18n="hero.spec.from">Người gửi không xác định</span>
+          </div>
+          <p class="scs-specimen__msg">
+            <mark class="scs-hl scs-hl--authority">Cong an TP</mark> thong bao tai khoan cua ban
+            <mark class="scs-hl scs-hl--fear">lien quan duong day rua tien</mark>.
+            Vui long <mark class="scs-hl scs-hl--secrecy">giu bi mat tuyet doi</mark> va
+            <mark class="scs-hl scs-hl--payment">chuyen toan bo so tien</mark> vao
+            tai khoan an toan, <mark class="scs-hl scs-hl--urgency">trong 30 phut</mark>,
+            nhap <mark class="scs-hl scs-hl--credential">ma OTP</mark> tai
+            <mark class="scs-hl scs-hl--link_lure">vcb-verify.xyz</mark>.
+          </p>
+          <div class="scs-specimen__foot">
+            <div class="scs-specimen__bar"><span class="scs-specimen__bar-fill"></span></div>
+            <span class="scs-specimen__score" data-i18n="hero.spec.score">Rủi ro 86/100 — Nguy cơ nghiêm trọng</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ANALYZE ===================== -->
+    <section id="view-analyze" class="scs-view" data-view="analyze" hidden>
+      <div class="scs-container">
+        <h2 class="scs-view__title" data-i18n="input.title">Bạn muốn kiểm tra gì?</h2>
+
+        <div class="scs-tabs" role="tablist" aria-label="Input type">
+          <button class="scs-tab is-active" role="tab" aria-selected="true" data-tab="text"><span aria-hidden="true">💬</span><span data-i18n="tab.text">Văn bản</span></button>
+          <button class="scs-tab" role="tab" aria-selected="false" data-tab="voice"><span aria-hidden="true">🎙</span><span data-i18n="tab.voice">Giọng nói</span></button>
+          <button class="scs-tab" role="tab" aria-selected="false" data-tab="image"><span aria-hidden="true">🖼</span><span data-i18n="tab.image">Hình ảnh</span></button>
+          <button class="scs-tab" role="tab" aria-selected="false" data-tab="video"><span aria-hidden="true">🎬</span><span data-i18n="tab.video">Video</span></button>
+          <button class="scs-tab" role="tab" aria-selected="false" data-tab="file"><span aria-hidden="true">📄</span><span data-i18n="tab.file">Tệp tin</span></button>
+          <button class="scs-tab" role="tab" aria-selected="false" data-tab="phone"><span aria-hidden="true">📞</span><span data-i18n="tab.phone">Số điện thoại</span></button>
+        </div>
+
+        <div class="scs-panels">
+          <!-- TEXT -->
+          <div class="scs-panel is-active" data-panel="text" role="tabpanel">
+            <label class="scs-field">
+              <textarea id="scs-text" class="scs-textarea" rows="7" maxlength="10000" data-i18n-ph="text.placeholder"></textarea>
+            </label>
+            <div class="scs-row scs-row--between">
+              <span class="scs-hint" data-i18n="text.hint"></span>
+              <span class="scs-counter scs-mono"><span id="scs-text-count">0</span>/10000</span>
+            </div>
+            <div class="scs-row scs-samples-row">
+              <span class="scs-samples-label" data-i18n="common.samples">Thử mẫu có sẵn:</span>
+              <span id="scs-text-samples" class="scs-samples"></span>
+            </div>
+            <div class="scs-row scs-row--between scs-actionbar">
+              <label class="scs-check">
+                <input type="checkbox" id="scs-consent" />
+                <span data-i18n="consent.history">Lưu kết quả vào Lịch sử (chỉ trên máy này)</span>
+              </label>
+              <div class="scs-row">
+                <button type="button" class="scs-btn scs-btn--ghost" id="scs-text-clear" data-i18n="common.clear">Xóa</button>
+                <button type="button" class="scs-btn scs-btn--primary" id="scs-text-analyze" data-i18n="common.analyze">Phân tích rủi ro</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- VOICE -->
+          <div class="scs-panel" data-panel="voice" role="tabpanel" hidden>
+            <h3 class="scs-panel__h" data-i18n="voice.title">Thu âm hoặc kể lại cuộc gọi</h3>
+            <p class="scs-hint" data-i18n="voice.hint"></p>
+            <div class="scs-voice">
+              <button type="button" class="scs-btn scs-btn--rec" id="scs-voice-record">
+                <span class="scs-rec-dot" aria-hidden="true"></span><span id="scs-voice-record-label" data-i18n="voice.record">Thu âm</span>
+              </button>
+              <canvas id="scs-voice-wave" class="scs-wave" width="320" height="56" aria-hidden="true"></canvas>
+              <span id="scs-voice-timer" class="scs-mono scs-voice__timer">0.0s</span>
+            </div>
+            <p id="scs-voice-status" class="scs-note" role="status"></p>
+            <label class="scs-field">
+              <span class="scs-label" data-i18n="voice.transcript">Nội dung cuộc gọi (bản chữ)</span>
+              <textarea id="scs-voice-transcript" class="scs-textarea" rows="5" data-i18n-ph="voice.transcript.ph"></textarea>
+            </label>
+            <p class="scs-note" data-i18n="voice.audio.kept"></p>
+            <div class="scs-row scs-row--end">
+              <button type="button" class="scs-btn scs-btn--primary" id="scs-voice-analyze" data-i18n="common.analyze">Phân tích rủi ro</button>
+            </div>
+          </div>
+
+          <!-- IMAGE -->
+          <div class="scs-panel" data-panel="image" role="tabpanel" hidden>
+            <h3 class="scs-panel__h" data-i18n="image.title">Tải ảnh chụp màn hình</h3>
+            <p class="scs-hint" data-i18n="image.hint"></p>
+            <div class="scs-drop" id="scs-image-drop" tabindex="0" role="button">
+              <input type="file" id="scs-image-input" accept="image/png,image/jpeg,image/webp" hidden />
+              <span class="scs-drop__icon" aria-hidden="true">🖼</span>
+              <span class="scs-drop__main" data-i18n="image.choose">Chọn ảnh</span>
+              <span class="scs-drop__sub" data-i18n="image.drop">hoặc kéo thả vào đây</span>
+            </div>
+            <div id="scs-image-stage" class="scs-image-stage" hidden>
+              <div class="scs-canvas-wrap" id="scs-image-canvas-wrap">
+                <canvas id="scs-image-canvas" class="scs-canvas"></canvas>
+                <div id="scs-image-cropbox" class="scs-cropbox" hidden></div>
+              </div>
+              <p class="scs-note" data-i18n="image.crop.hint"></p>
+              <div class="scs-row scs-row--wrap">
+                <button type="button" class="scs-btn scs-btn--ghost scs-btn--sm" id="scs-image-crop-reset" data-i18n="image.crop.reset">Bỏ vùng chọn</button>
+                <button type="button" class="scs-btn scs-btn--secondary scs-btn--sm" id="scs-image-ocr" data-i18n="image.ocr.run">Đọc chữ trong ảnh (OCR)</button>
+                <span id="scs-image-ocr-progress" class="scs-note scs-mono" hidden></span>
+                <span id="scs-image-conf" class="scs-note" hidden></span>
+                <span id="scs-image-qr" class="scs-note" hidden></span>
+              </div>
+              <p class="scs-note" data-i18n="image.ocr.need"></p>
+              <label class="scs-field">
+                <span class="scs-label" data-i18n="image.edit.hint">Kiểm tra / sửa phần chữ trước khi phân tích</span>
+                <textarea id="scs-image-text" class="scs-textarea" rows="5"></textarea>
+              </label>
+              <div class="scs-row scs-row--end">
+                <button type="button" class="scs-btn scs-btn--primary" id="scs-image-analyze" data-i18n="common.analyze">Phân tích rủi ro</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- VIDEO -->
+          <div class="scs-panel" data-panel="video" role="tabpanel" hidden>
+            <h3 class="scs-panel__h" data-i18n="video.title">Quét video ngắn</h3>
+            <p class="scs-hint" data-i18n="video.hint"></p>
+            <div class="scs-drop" id="scs-video-drop" tabindex="0" role="button">
+              <input type="file" id="scs-video-input" accept="video/mp4,video/webm" hidden />
+              <span class="scs-drop__icon" aria-hidden="true">🎬</span>
+              <span class="scs-drop__main" data-i18n="video.choose">Chọn video</span>
+              <span class="scs-drop__sub" data-i18n="video.drop">hoặc kéo thả vào đây</span>
+            </div>
+            <div id="scs-video-stage" hidden>
+              <p id="scs-video-meta" class="scs-note scs-mono"></p>
+              <div class="scs-row scs-row--wrap">
+                <button type="button" class="scs-btn scs-btn--secondary scs-btn--sm" id="scs-video-scan" data-i18n="video.scan">Quét khung hình</button>
+                <span id="scs-video-progress" class="scs-note scs-mono" hidden></span>
+              </div>
+              <div id="scs-video-thumbs" class="scs-thumbs"></div>
+              <label class="scs-field">
+                <span class="scs-label" data-i18n="video.transcript">Lời thoại trong video</span>
+                <textarea id="scs-video-transcript" class="scs-textarea" rows="4" data-i18n-ph="video.transcript.ph"></textarea>
+              </label>
+              <div class="scs-row scs-row--end">
+                <button type="button" class="scs-btn scs-btn--primary" id="scs-video-analyze" data-i18n="common.analyze">Phân tích rủi ro</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- FILE -->
+          <div class="scs-panel" data-panel="file" role="tabpanel" hidden>
+            <h3 class="scs-panel__h" data-i18n="file.title">Kiểm tra an toàn tệp</h3>
+            <p class="scs-hint" data-i18n="file.hint"></p>
+            <div class="scs-drop" id="scs-file-drop" tabindex="0" role="button">
+              <input type="file" id="scs-file-input" hidden />
+              <span class="scs-drop__icon" aria-hidden="true">📄</span>
+              <span class="scs-drop__main" data-i18n="file.choose">Chọn tệp</span>
+              <span class="scs-drop__sub" data-i18n="file.drop">hoặc kéo thả vào đây</span>
+            </div>
+            <div class="scs-row scs-row--between scs-actionbar">
+              <button type="button" class="scs-btn scs-btn--ghost scs-btn--sm" id="scs-file-demo" data-i18n="file.demo.make">Tạo tệp demo vô hại</button>
+              <span id="scs-file-status" class="scs-note" role="status"></span>
+            </div>
+          </div>
+
+          <!-- PHONE -->
+          <div class="scs-panel" data-panel="phone" role="tabpanel" hidden>
+            <h3 class="scs-panel__h" data-i18n="phone.title">Xác thực số điện thoại</h3>
+            <p class="scs-hint" data-i18n="phone.hint"></p>
+            <div class="scs-row scs-row--wrap scs-phone-form">
+              <label class="scs-field scs-field--grow">
+                <input type="tel" id="scs-phone-input" class="scs-input" data-i18n-ph="phone.ph" />
+              </label>
+              <label class="scs-field">
+                <span class="scs-label" data-i18n="phone.country">Quốc gia mặc định</span>
+                <select id="scs-phone-country" class="scs-input">
+                  <option value="VN" selected>Việt Nam (+84)</option>
+                  <option value="US">United States (+1)</option>
+                  <option value="GB">United Kingdom (+44)</option>
+                  <option value="SG">Singapore (+65)</option>
+                  <option value="JP">Japan (+81)</option>
+                  <option value="KR">Korea (+82)</option>
+                  <option value="CN">China (+86)</option>
+                  <option value="TH">Thailand (+66)</option>
+                </select>
+              </label>
+            </div>
+            <label class="scs-field">
+              <span class="scs-label">💬 <span data-i18n="phone.analyzeMsg">Phân tích kèm nội dung từ số này</span> <span class="scs-muted">(<span data-i18n="common.optional">tùy chọn</span>)</span></span>
+              <textarea id="scs-phone-msg" class="scs-textarea" rows="3"></textarea>
+            </label>
+            <div class="scs-row scs-row--end">
+              <button type="button" class="scs-btn scs-btn--primary" id="scs-phone-check" data-i18n="phone.check">Kiểm tra số</button>
+            </div>
+            <p class="scs-note" data-i18n="ext.off.note"></p>
+          </div>
+        </div>
+
+        <!-- processing + result mounts -->
+        <div id="scs-processing" class="scs-mount" hidden></div>
+        <div id="scs-result" class="scs-mount" hidden></div>
+      </div>
+    </section>
+
+    <!-- ===================== LEARN ===================== -->
+    <section id="view-learn" class="scs-view" data-view="learn" hidden>
+      <div class="scs-container">
+        <h2 class="scs-view__title" data-i18n="learn.title">Học nhanh 2 phút</h2>
+        <p class="scs-view__sub" data-i18n="learn.sub"></p>
+        <div id="scs-game" class="scs-card scs-game"></div>
+        <h3 class="scs-section-h" data-i18n="glossary.title">Từ điển dấu hiệu lừa đảo</h3>
+        <div id="scs-glossary" class="scs-glossary"></div>
+        <h3 class="scs-section-h" data-i18n="tips.title">Mẹo an toàn theo nhóm</h3>
+        <div class="scs-tips" id="scs-tips"></div>
+      </div>
+    </section>
+
+    <!-- ===================== HISTORY ===================== -->
+    <section id="view-history" class="scs-view" data-view="history" hidden>
+      <div class="scs-container">
+        <div class="scs-row scs-row--between">
+          <h2 class="scs-view__title" data-i18n="history.title">Lịch sử trên máy bạn</h2>
+          <button type="button" class="scs-btn scs-btn--ghost scs-btn--sm" id="scs-history-clear" data-i18n="history.deleteAll">Xóa tất cả</button>
+        </div>
+        <p class="scs-note" data-i18n="history.note"></p>
+        <div id="scs-history" class="scs-history"></div>
+      </div>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section id="view-about" class="scs-view" data-view="about" hidden>
+      <div class="scs-container">
+        <h2 class="scs-view__title" data-i18n="about.title">Model Card & Quyền riêng tư</h2>
+        <div id="scs-about" class="scs-about"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="scs-footer">
+    <div class="scs-container scs-footer__inner">
+      <p data-i18n="footer.tag"></p>
+      <p class="scs-footer__priv" data-i18n="footer.priv"></p>
+    </div>
+  </footer>
+
+  <div id="scs-toast" class="scs-toast" role="status" aria-live="polite"></div>
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <!-- data layer (window.SCS_*) -->
+  <script src="data/locales.vi.js"></script>
+  <script src="data/locales.en.js"></script>
+  <script src="data/rules.vi.js"></script>
+  <script src="data/rules.en.js"></script>
+  <script src="data/demoSamples.js"></script>
+  <script src="data/model/model.js"></script>
+
+  <!-- vendor libs (offline) -->
+  <script defer src="vendor/jsQR.js"></script>
+  <script defer src="vendor/libphonenumber.min.js"></script>
+  <script defer src="vendor/jszip.min.js"></script>
+  <script defer src="vendor/tesseract.min.js"></script>
+
+  <!-- app modules -->
+  <script defer src="js/utils/sanitizer.js"></script>
+  <script defer src="js/utils/extract.js"></script>
+  <script defer src="js/utils/validators.js"></script>
+  <script defer src="js/utils/hashing.js"></script>
+  <script defer src="js/utils/redaction.js"></script>
+  <script defer src="js/ml/vectorizer.js"></script>
+  <script defer src="js/ml/model.js"></script>
+  <script defer src="js/ml/ruleEngine.js"></script>
+  <script defer src="js/ml/scoreFusion.js"></script>
+  <script defer src="js/analyzers/textAnalyzer.js"></script>
+  <script defer src="js/analyzers/phoneAnalyzer.js"></script>
+  <script defer src="js/analyzers/fileScanner.js"></script>
+  <script defer src="js/analyzers/imageAnalyzer.js"></script>
+  <script defer src="js/analyzers/voiceAnalyzer.js"></script>
+  <script defer src="js/analyzers/videoAnalyzer.js"></script>
+  <script defer src="js/integrations/phoneLookupAdapter.js"></script>
+  <script defer src="js/integrations/fileReputationAdapter.js"></script>
+  <script defer src="js/i18n.js"></script>
+  <script defer src="js/state.js"></script>
+  <script defer src="js/ui.js"></script>
+  <script defer src="js/app.js"></script>
+</body>
+</html>

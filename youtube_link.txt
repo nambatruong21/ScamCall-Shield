@@ -1,0 +1,12 @@
+# Dán link video demo YouTube của bạn vào đây (thay dòng dưới):
+https://youtu.be/REPLACE_WITH_YOUR_VIDEO_ID
+
+# Gợi ý nội dung video (≤7 phút) — bám theo mục 15 của Dev Guide:
+# 1. Mở đầu: vấn đề lừa đảo + "chạy 100% trên trình duyệt, riêng tư".
+# 2. Dán 1 tin nhắn giả danh ngân hàng -> chỉ điểm rủi ro, evidence tô màu, kế hoạch ứng phó.
+# 3. Bật "đã chuyển tiền" -> xuất hiện bước khẩn cấp.
+# 4. Ảnh chụp màn hình -> OCR + QR -> phân tích.
+# 5. Kiểm tra tệp invoice.pdf.exe (nút tạo tệp demo) -> chỉ báo đuôi kép/exec.
+# 6. Số điện thoại -> định dạng hợp lệ + nhà mạng (nhấn mạnh KHÔNG nói "an toàn").
+# 7. Đổi ngôn ngữ Việt<->Anh tức thì, đổi nền sáng/tối, Chế độ Gia đình đọc to.
+# 8. Mở "Về model" -> model card, số liệu 5-fold CV, quyền riêng tư.

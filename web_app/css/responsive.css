@@ -1,0 +1,62 @@
+/* ScamCall Shield — responsive (mobile-first refinements).
+ * Base styles target small screens well; these queries adapt the wider
+ * layouts down to a 360px floor.
+ */
+
+/* ---- tablet & below ---- */
+@media (max-width: 920px) {
+  .scs-hero { grid-template-columns: 1fr; gap: var(--sp-6); padding-block: var(--sp-6); }
+  .scs-specimen { order: -1; }
+  .scs-why__row { grid-template-columns: 1fr 1.4fr auto; }
+}
+
+/* ---- phones ---- */
+@media (max-width: 680px) {
+  .scs-container { padding-inline: var(--sp-4); }
+  .scs-main { padding-block: var(--sp-5) var(--sp-7); }
+
+  /* header: keep brand + actions; nav scrolls horizontally */
+  .scs-header__inner { gap: var(--sp-2); }
+  .scs-nav { display: none; }
+  .scs-brand__name { font-size: 1rem; }
+
+  .scs-hero__title { font-size: clamp(2rem, 7vw, 2.6rem); }
+  .scs-hero__sub { font-size: 1rem; }
+  .scs-hero__badges { grid-template-columns: 1fr; gap: var(--sp-2); }
+  .scs-hero__cta .scs-btn { flex: 1 1 auto; }
+
+  /* tabs scroll horizontally, no wrap */
+  .scs-tabs { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: var(--sp-2); }
+  .scs-tabs::-webkit-scrollbar { display: none; }
+  .scs-tab { flex: none; }
+
+  .scs-result-card { padding: var(--sp-4); }
+  .scs-result__top { gap: var(--sp-3); }
+  .scs-result__gauge { width: 200px; margin-inline: auto; }
+  .scs-result__verdict { text-align: center; flex-basis: 100%; }
+  .scs-result__leveld { text-align: left; }
+
+  .scs-flags { grid-template-columns: 1fr; }
+  .scs-why__row { grid-template-columns: 1fr; gap: var(--sp-1); }
+  .scs-why__label { flex-direction: row; justify-content: space-between; }
+  .scs-game__choices { flex-direction: column; }
+
+  /* sticky primary action for the active analyzer panel */
+  .scs-actionbar { position: sticky; bottom: 0; background: linear-gradient(180deg, transparent, var(--scs-bg) 32%); padding-top: var(--sp-3); margin-inline: calc(-1 * var(--sp-4)); padding-inline: var(--sp-4); }
+
+  .scs-footer__inner { padding-block: var(--sp-4); }
+}
+
+/* ---- very small (360px) ---- */
+@media (max-width: 380px) {
+  .scs-header__actions { gap: 6px; }
+  .scs-pill-btn span:last-child { display: none; }  /* show only the icon */
+  .scs-pill-btn { padding: 8px; }
+  .scs-btn { padding: 10px 14px; }
+  .scs-result__level { font-size: 1.35rem; }
+}
+
+/* ---- larger desktops ---- */
+@media (min-width: 1180px) {
+  .scs-hero { gap: var(--sp-8); }
+}

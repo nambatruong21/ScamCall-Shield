@@ -1,0 +1,70 @@
+/* ScamCall Shield — base reset & foundations. */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--scs-font-body);
+  font-size: var(--scs-fs-body);
+  line-height: var(--scs-lh);
+  color: var(--scs-ink);
+  background: var(--scs-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, p, ul, ol, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+img, svg, canvas, video { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; }
+a { color: var(--scs-info-600); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.scs-mono { font-family: var(--scs-font-mono); font-feature-settings: "tnum" 1; letter-spacing: -0.01em; }
+.scs-muted { color: var(--scs-ink-3); }
+
+/* ---- layout primitives ---- */
+.scs-container { width: 100%; max-width: var(--scs-container); margin-inline: auto; padding-inline: var(--sp-5); }
+.scs-main { display: block; padding-block: var(--sp-6) var(--sp-8); }
+.scs-view { animation: scs-fade .35s ease both; }
+.scs-view[hidden] { display: none; }
+.scs-view__title { font-family: var(--scs-font-display); font-size: var(--scs-fs-h2); font-weight: 800; letter-spacing: -0.02em; color: var(--scs-ink); }
+.scs-view__sub { color: var(--scs-ink-2); margin-top: var(--sp-2); max-width: 60ch; }
+.scs-section-h { font-size: var(--scs-fs-h3); font-weight: 700; margin-top: var(--sp-6); color: var(--scs-ink); }
+
+.scs-row { display: flex; align-items: center; gap: var(--sp-3); }
+.scs-row--between { justify-content: space-between; }
+.scs-row--end { justify-content: flex-end; }
+.scs-row--wrap { flex-wrap: wrap; }
+
+/* ---- focus & a11y ---- */
+:focus-visible { outline: none; box-shadow: var(--sh-focus); border-radius: var(--r-sm); }
+.scs-skip {
+  position: fixed; left: var(--sp-4); top: -120px; z-index: 100;
+  background: var(--scs-navy); color: #fff; padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-md); transition: top .2s ease; box-shadow: var(--sh-2);
+}
+.scs-skip:focus { top: var(--sp-4); text-decoration: none; }
+.scs-sronly, .scs-sronly:focus {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ---- footer ---- */
+.scs-footer { border-top: 1px solid var(--scs-line); background: var(--scs-surface); margin-top: var(--sp-8); }
+.scs-footer__inner { padding-block: var(--sp-5); color: var(--scs-ink-2); font-size: var(--scs-fs-sm); display: flex; flex-direction: column; gap: var(--sp-1); }
+.scs-footer__priv { color: var(--scs-ink-3); font-size: var(--scs-fs-xs); }
+
+/* ---- animations ---- */
+@keyframes scs-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes scs-pop { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
+@keyframes scs-spin { to { transform: rotate(360deg); } }
+@keyframes scs-scan { 0% { transform: translateY(-8%); opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { transform: translateY(108%); opacity: 0; } }
+@keyframes scs-pulse { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+@keyframes scs-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+  .scs-specimen__scan { display: none; }
+}

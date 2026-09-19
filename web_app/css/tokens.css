@@ -1,0 +1,125 @@
+/* ScamCall Shield — design tokens.
+ * Palette pinned by the Dev Guide (11.1). The product is a forensic tool: a
+ * suspicious message is a "specimen" under analysis, so the system reads
+ * clinical and calm, with manipulation tactics colour-coded consistently
+ * across highlights, flag cards and badges. Data is always set in mono.
+ */
+
+:root {
+  /* ---- brand & status (Dev Guide tokens) ---- */
+  --scs-navy: #0B2447;
+  --scs-navy-700: #123056;
+  --scs-info: #2F80ED;
+  --scs-info-600: #1D6FE0;
+  --scs-safe: #2E7D32;
+  --scs-warning: #F9A825;
+  --scs-danger: #C62828;
+
+  /* ---- surfaces (light) ---- */
+  --scs-bg: #F5F7FA;
+  --scs-bg-tint: #EEF2F8;
+  --scs-surface: #FFFFFF;
+  --scs-surface-2: #F7F9FC;
+  --scs-line: #E2E8F0;
+  --scs-line-strong: #CBD5E1;
+
+  /* ---- text ---- */
+  --scs-ink: #0E1A2B;
+  --scs-ink-2: #41506A;
+  --scs-ink-3: #6B7A93;
+  --scs-on-accent: #FFFFFF;
+
+  /* ---- risk levels (gauge, badges) ---- */
+  --scs-level-low: #2E7D32;
+  --scs-level-medium: #F59E0B;
+  --scs-level-high: #EA580C;
+  --scs-level-critical: #C62828;
+  --scs-gauge-track: #E5EAF1;
+
+  /* ---- manipulation-tactic accents (one per category) ---- */
+  --scs-cat-urgency: #B45309;
+  --scs-cat-secrecy: #475569;
+  --scs-cat-credential: #6D28D9;
+  --scs-cat-payment: #BE123C;
+  --scs-cat-authority: #3730A3;
+  --scs-cat-fear: #B91C1C;
+  --scs-cat-remote_app: #0F766E;
+  --scs-cat-reward: #C2410C;
+  --scs-cat-link_lure: #1D4ED8;
+  --scs-cat-info_request: #A21CAF;
+  --scs-cat-too_good: #BE185D;
+  --scs-cat-impersonation: #0E7490;
+  --scs-cat-mix: 15%;        /* tint strength for highlight backgrounds */
+
+  /* ---- typography ---- */
+  --scs-font-display: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --scs-font-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --scs-font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --scs-fs-hero: clamp(2.15rem, 1.3rem + 3.6vw, 3.4rem);
+  --scs-fs-h2: clamp(1.5rem, 1.15rem + 1.4vw, 2.05rem);
+  --scs-fs-h3: 1.16rem;
+  --scs-fs-body: 1rem;
+  --scs-fs-sm: 0.875rem;
+  --scs-fs-xs: 0.78rem;
+  --scs-lh: 1.62;
+
+  /* ---- spacing ---- */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 64px;
+
+  /* ---- radius ---- */
+  --r-sm: 8px; --r-md: 12px; --r-lg: 18px; --r-xl: 26px; --r-pill: 999px;
+
+  /* ---- elevation ---- */
+  --sh-1: 0 1px 2px rgba(11, 36, 71, .06), 0 1px 3px rgba(11, 36, 71, .08);
+  --sh-2: 0 4px 12px rgba(11, 36, 71, .08), 0 2px 6px rgba(11, 36, 71, .06);
+  --sh-3: 0 18px 48px rgba(11, 36, 71, .16), 0 6px 18px rgba(11, 36, 71, .10);
+  --sh-focus: 0 0 0 3px rgba(47, 128, 237, .35);
+
+  --scs-container: 1080px;
+  --scs-header-h: 64px;
+}
+
+/* ===================== DARK (navy-ink, not pure black) ===================== */
+[data-theme="dark"] {
+  --scs-bg: #0A1628;
+  --scs-bg-tint: #0E1D34;
+  --scs-surface: #0F2240;
+  --scs-surface-2: #14294A;
+  --scs-line: #1E3656;
+  --scs-line-strong: #2A456B;
+
+  --scs-ink: #EAF1FB;
+  --scs-ink-2: #AFC0DA;
+  --scs-ink-3: #8095B5;
+
+  --scs-info: #5AA0FF;
+  --scs-info-600: #7DB4FF;
+
+  --scs-level-low: #56C26A;
+  --scs-level-medium: #FBBF24;
+  --scs-level-high: #FB923C;
+  --scs-level-critical: #F87171;
+  --scs-gauge-track: #1C3358;
+
+  /* brighter tactic accents for dark surfaces */
+  --scs-cat-urgency: #F59E0B;
+  --scs-cat-secrecy: #94A3B8;
+  --scs-cat-credential: #A78BFA;
+  --scs-cat-payment: #FB7185;
+  --scs-cat-authority: #818CF8;
+  --scs-cat-fear: #F87171;
+  --scs-cat-remote_app: #2DD4BF;
+  --scs-cat-reward: #FB923C;
+  --scs-cat-link_lure: #60A5FA;
+  --scs-cat-info_request: #E879F9;
+  --scs-cat-too_good: #F472B6;
+  --scs-cat-impersonation: #22D3EE;
+  --scs-cat-mix: 22%;
+
+  --sh-1: 0 1px 2px rgba(0, 0, 0, .4);
+  --sh-2: 0 6px 16px rgba(0, 0, 0, .45);
+  --sh-3: 0 20px 50px rgba(0, 0, 0, .55);
+  --sh-focus: 0 0 0 3px rgba(90, 160, 255, .45);
+}

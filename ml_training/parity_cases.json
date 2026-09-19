@@ -1,0 +1,184 @@
+[
+ {
+  "text": "Tài khoản của bạn sẽ bị KHÓA trong 5 phút, nhập OTP ngay tại link!",
+  "binary_prob": 0.866739601786017,
+  "type_probs": {
+   "account_takeover": 0.14172667886754334,
+   "bank_phishing": 0.23851175443764547,
+   "delivery": 0.12414102199892593,
+   "fake_authority": 0.13962183586686505,
+   "investment": 0.11199108079303516,
+   "job_scholarship": 0.11057157501434618,
+   "other": 0.13343605302163897
+  }
+ },
+ {
+  "text": "Mai họp nhóm 9h sáng phòng 302 nhé, nhớ mang laptop.",
+  "binary_prob": 0.20062110612687853,
+  "type_probs": {
+   "account_takeover": 0.14490738169047626,
+   "bank_phishing": 0.13962339706442434,
+   "delivery": 0.13230501192367497,
+   "fake_authority": 0.1426285829643333,
+   "investment": 0.14940046775320454,
+   "job_scholarship": 0.15610233840477725,
+   "other": 0.1350328201991094
+  }
+ },
+ {
+  "text": "This is the police, keep it secret and transfer money to the custody account now.",
+  "binary_prob": 0.6279509390090465,
+  "type_probs": {
+   "account_takeover": 0.1535607425010727,
+   "bank_phishing": 0.13209031852774827,
+   "delivery": 0.14300008747695178,
+   "fake_authority": 0.18339058932486993,
+   "investment": 0.1264164408053315,
+   "job_scholarship": 0.12672126033970563,
+   "other": 0.13482056102432022
+  }
+ },
+ {
+  "text": "Your parcel is held at customs, pay $3.99 at quick-post-track.top today.",
+  "binary_prob": 0.6556660338281843,
+  "type_probs": {
+   "account_takeover": 0.12138304291552177,
+   "bank_phishing": 0.13001867321258515,
+   "delivery": 0.2334607512656688,
+   "fake_authority": 0.13096855938299798,
+   "investment": 0.12777760935867083,
+   "job_scholarship": 0.13490198383614815,
+   "other": 0.12148938002840741
+  }
+ },
+ {
+  "text": "Mã OTP của bạn là 583920, không chia sẻ với bất kỳ ai.",
+  "binary_prob": 0.4604423177711752,
+  "type_probs": {
+   "account_takeover": 0.14180133259601482,
+   "bank_phishing": 0.15646831828572266,
+   "delivery": 0.1354345611681889,
+   "fake_authority": 0.14690600841344276,
+   "investment": 0.14268883427117013,
+   "job_scholarship": 0.12499150204914654,
+   "other": 0.1517094432163143
+  }
+ },
+ {
+  "text": "Tuyển CTV chốt đơn, đặt cọc 300k nhận việc ngay hôm nay!!!",
+  "binary_prob": 0.7548706959218118,
+  "type_probs": {
+   "account_takeover": 0.11181230356311556,
+   "bank_phishing": 0.1255794561767663,
+   "delivery": 0.13125222737311856,
+   "fake_authority": 0.11722301274035307,
+   "investment": 0.13480026170563775,
+   "job_scholarship": 0.25854223749728855,
+   "other": 0.12079050094372029
+  }
+ },
+ {
+  "text": "Team lunch Friday to celebrate the launch, vote Korean or Thai.",
+  "binary_prob": 0.32245032694040576,
+  "type_probs": {
+   "account_takeover": 0.14019926001728236,
+   "bank_phishing": 0.14366335702090038,
+   "delivery": 0.1427846500588645,
+   "fake_authority": 0.14629892978778392,
+   "investment": 0.1454782243847886,
+   "job_scholarship": 0.145116101602238,
+   "other": 0.1364594771281422
+  }
+ },
+ {
+  "text": "Mẹ ơi con đổi số mới, chuyển gấp 15 triệu vào tài khoản này nhé.",
+  "binary_prob": 0.6470553172724045,
+  "type_probs": {
+   "account_takeover": 0.24085399331675889,
+   "bank_phishing": 0.12260799814121152,
+   "delivery": 0.111621045106017,
+   "fake_authority": 0.12829479612351313,
+   "investment": 0.13084565685994792,
+   "job_scholarship": 0.13058586608002212,
+   "other": 0.13519064437252945
+  }
+ },
+ {
+  "text": "Sàn cam kết lợi nhuận 30% mỗi tháng, nạp 10 triệu hôm nay.",
+  "binary_prob": 0.7824511008378467,
+  "type_probs": {
+   "account_takeover": 0.1140708311323599,
+   "bank_phishing": 0.11751173822788279,
+   "delivery": 0.11327168423730799,
+   "fake_authority": 0.121243908361115,
+   "investment": 0.27814839508547307,
+   "job_scholarship": 0.1369100884507393,
+   "other": 0.11884335450512191
+  }
+ },
+ {
+  "text": "zz qq unknownwordhere",
+  "binary_prob": 0.5079894638180348,
+  "type_probs": {
+   "account_takeover": 0.14094648291711956,
+   "bank_phishing": 0.14297943090456114,
+   "delivery": 0.1364012288187926,
+   "fake_authority": 0.14543484138957882,
+   "investment": 0.14657860150174862,
+   "job_scholarship": 0.14993754276609675,
+   "other": 0.1377218717021025
+  }
+ },
+ {
+  "text": "Chuc mung ban trung thuong, nop phi 500k nhan qua ngay.",
+  "binary_prob": 0.6833146040851251,
+  "type_probs": {
+   "account_takeover": 0.1293860077226472,
+   "bank_phishing": 0.12987363074093372,
+   "delivery": 0.13341063730368705,
+   "fake_authority": 0.13193783232128195,
+   "investment": 0.12664623858245758,
+   "job_scholarship": 0.14400215106353526,
+   "other": 0.20474350226545726
+  }
+ },
+ {
+  "text": "We never ask for your OTP. Stay alert against fake bank staff calls.",
+  "binary_prob": 0.3102988120116334,
+  "type_probs": {
+   "account_takeover": 0.1359947548010129,
+   "bank_phishing": 0.16054126215024012,
+   "delivery": 0.13932035608449944,
+   "fake_authority": 0.141759666097438,
+   "investment": 0.1353851481759867,
+   "job_scholarship": 0.1429753917096427,
+   "other": 0.14402342098118012
+  }
+ },
+ {
+  "text": "ĐÂY LÀ CÔNG AN! Giữ bí mật, chuyển 200 triệu để điều tra!",
+  "binary_prob": 0.6897708708495076,
+  "type_probs": {
+   "account_takeover": 0.1339266306318249,
+   "bank_phishing": 0.12165780067930942,
+   "delivery": 0.12361994719865654,
+   "fake_authority": 0.22647988653194367,
+   "investment": 0.12787919844363022,
+   "job_scholarship": 0.1357599315745517,
+   "other": 0.1306766049400836
+  }
+ },
+ {
+  "text": "ok",
+  "binary_prob": 0.5079894638180348,
+  "type_probs": {
+   "account_takeover": 0.14094648291711956,
+   "bank_phishing": 0.14297943090456114,
+   "delivery": 0.1364012288187926,
+   "fake_authority": 0.14543484138957882,
+   "investment": 0.14657860150174862,
+   "job_scholarship": 0.14993754276609675,
+   "other": 0.1377218717021025
+  }
+ }
+]
