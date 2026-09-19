@@ -249,8 +249,11 @@
     "why.rules": "Dấu hiệu thao túng (rule engine)",
     "why.ind": "Chỉ báo link / QR / tệp / SĐT",
     "why.ctx": "Bối cảnh nội dung",
+    "why.transformer": "Transformer AI (XLM-R phishing)",
+    "why.shadow": "chế độ thử nghiệm — chưa tính vào điểm cuối",
     "why.weight": "trọng số {w}%",
     "why.noml": "Model ML chưa tải được — điểm dựa trên rule engine và chỉ báo.",
+
 
     "result.export.txt": "Tải báo cáo .txt", "result.export.json": "Tải dữ liệu .json",
     "result.save": "Lưu vào lịch sử", "result.saved": "Đã lưu vào lịch sử trên máy bạn",

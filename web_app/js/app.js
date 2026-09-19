@@ -163,8 +163,9 @@
         if (i <= 3) { ctrl.setStep(i); i++; g.setTimeout(tick, 380); }
         else { ctrl.done(); g.setTimeout(resolve, 180); }
       })();
-    }).then(function () {
-      var res = SCS.engine.analyze(input);
+    }).then(async function () {
+      var res = await SCS.engine.analyzeWithTransformer(input);
+
       show(proc, false);
       ST.get.lastResult = res;
       ST.get.statuses = { clicked: false, shared: false, paid: false };
