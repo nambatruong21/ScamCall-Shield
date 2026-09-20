@@ -834,6 +834,7 @@
 
     host.appendChild(aboutCard("about.purpose.t", el("p", { text: t("about.purpose.d") })));
     host.appendChild(aboutCard("about.algo.t", el("p", { text: t("about.algo.d") })));
+    host.appendChild(aboutCard("about.transformer.t", el("p", { text: t("about.transformer.d") })));
     host.appendChild(aboutCard("about.data.t", el("p", { text: t("about.data.d", { total: ds.total, scam: ds.scam, safe: ds.safe, vi: ds.vi, en: ds.en }) })));
 
     var metricsBody = el("div", { class: "scs-metrics" });

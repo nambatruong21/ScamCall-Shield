@@ -63,11 +63,20 @@ Mô hình **được train thật** bằng scikit-learn — không bịa số li
 - **Train:** scikit-learn → export trọng số sang `web_app/data/model/model.js`.
 - **Suy luận:** 100% bằng JavaScript trong trình duyệt (`web_app/js/ml/`), **trùng khớp
   scikit-learn tới < 1e-6** (xác minh bằng `ml_training/parity.test.js`).
-- **Điểm cuối hợp nhất:** `clamp(0.45·ML + 0.35·luật + 0.15·chỉ_báo + 0.05·bối_cảnh, 0..100)`.
+- **Điểm nền:** `clamp(0.45·ML + 0.35·luật + 0.15·chỉ_báo + 0.05·bối_cảnh, 0..100)`.
+- **Transformer bổ sung:** XLM-R phishing/social-engineering, export ONNX và lượng tử INT8 (~279 MB), chạy trực tiếp trong trình duyệt bằng Transformers.js.
+- **Guarded boost:** Transformer không thay thế điểm nền và không bao giờ được kéo điểm xuống. Chỉ khi điểm nền `>= 50` và Transformer `>= 80/100`, hệ thống mới cộng tối đa `+10` điểm vào điểm cuối.
 
 **Chất lượng (5-fold cross-validation):**
 - Phát hiện scam — Precision **0.85** · Recall **0.969** · F1 **0.905** · Accuracy **0.87**
 - Phân loại kịch bản (7 lớp) — Macro-F1 **0.579** · Accuracy **0.598**
+Các metric trên là của mô hình TF-IDF + Logistic Regression nền.
+
+**Đánh giá Transformer trên dataset hiện tại:**
+- Vietnamese: Accuracy **71.71%** · Precision **92.65%** · Recall **62.38%** · F1 **74.56%**
+- English: Accuracy **82.35%** · Precision **82.09%** · Recall **90.16%** · F1 **85.94%**
+
+Transformer có cả false positive và false negative, vì vậy được dùng như tín hiệu xác nhận bổ sung thay vì bộ phân loại quyết định độc lập.
 
 Ưu tiên **recall** (bỏ sót scam nguy hiểm hơn báo nhầm). Dữ liệu là **tổng hợp/ẩn danh**,
 không chứa OTP/số tài khoản thật.
@@ -84,6 +93,7 @@ web_app/
 │   ├── app.js              # điều phối: router, tabs, các luồng, export
 │   ├── i18n.js · state.js · ui.js
 │   ├── ml/                 # vectorizer · model · ruleEngine · scoreFusion
+│   ├── ai/                 # XLM-R Transformer inference qua Transformers.js
 │   ├── analyzers/          # text · phone · file · image · voice · video
 │   ├── integrations/       # phone/file adapter (Contest Strict, không API key)
 │   └── utils/              # sanitizer · extract · validators · hashing · redaction
@@ -104,7 +114,9 @@ web_app/
 - Tệp được đọc dưới dạng **bytes**, không mở/không thực thi, không tải lên.
 - Báo cáo xuất ra (TXT/JSON) **che OTP, số tài khoản và số điện thoại**.
 - Lịch sử chỉ lưu khi bạn bật, nằm trong `localStorage`, xóa được toàn bộ bất cứ lúc nào.
-- **Contest Strict:** không gọi API ngoài, không API key trong mã nguồn. Adapter
+- Không dùng API inference hoặc API key để phân loại nội dung.
+- Lần đầu sử dụng Transformer cần Internet để tải Transformers.js và trọng số XLM-R từ Hugging Face; sau khi tải, suy luận diễn ra ngay trong trình duyệt.
+- Nội dung người dùng không được gửi tới Hugging Face để thực hiện phân loại.
   (Twilio Lookup / VirusTotal) để sẵn "đường nối" trong `js/integrations/` cho minh bạch.
 
 ---
@@ -120,6 +132,8 @@ web_app/
 
 ## 🗺️ Hướng phát triển
 
+- Giảm kích thước Transformer hoặc chuyển sang model nhỏ hơn để giảm thời gian tải lần đầu.
+- Mở rộng benchmark bằng dữ liệu thực tế độc lập với tập train trước khi tăng vai trò của Transformer trong điểm cuối.
 - Bộ luật mở rộng theo chiến dịch lừa đảo mới, cập nhật từ cộng đồng.
 - Tra cứu hash/uy tín số điện thoại qua API (chế độ Demo+, key theo phiên).
 - Bộ phân loại kịch bản mạnh hơn khi có thêm dữ liệu gán nhãn thực tế.
