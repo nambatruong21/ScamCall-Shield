@@ -17,3 +17,7 @@ ml_training/model.json
 Thumbs.db
 .vscode/
 .idea/
+
+# Local AI model artifacts
+ml_training/xlm_r_phishing_onnx/
+ml_training/xlm_r_phishing_quantized/

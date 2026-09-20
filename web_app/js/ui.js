@@ -282,13 +282,23 @@
       { key: "why.ind", val: c.indicators, wt: w.indicators },
       { key: "why.ctx", val: c.context, wt: w.context }
     ];
+    if (
+      c.transformerAvailable &&
+      typeof c.transformer === "number"
+    ) {
+      rows.push({
+        key: "why.transformer",
+        val: c.transformer,
+        boost: c.transformerBoost || 0
+      });
+    }
     var wrap = el("div", { class: "scs-why" });
     rows.forEach(function (r) {
       var v = Math.max(0, Math.min(100, r.val || 0));
       wrap.appendChild(el("div", { class: "scs-why__row" },
         el("div", { class: "scs-why__label" },
           el("span", { text: t(r.key) }),
-          el("span", { class: "scs-why__wt scs-mono", text: t("why.weight", { w: Math.round(r.wt * 100) }) })
+          el("span", { class: "scs-why__wt scs-mono", text: r.key === "why.transformer" ? t("why.boost", { b: r.boost || 0 }) : t("why.weight", { w: Math.round(r.wt * 100) }) })
         ),
         el("div", { class: "scs-bar scs-bar--thin" }, el("span", { class: "scs-bar__fill", style: { width: v + "%" } })),
         el("span", { class: "scs-why__val scs-mono", text: String(v) })

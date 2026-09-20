@@ -163,8 +163,9 @@
         if (i <= 3) { ctrl.setStep(i); i++; g.setTimeout(tick, 380); }
         else { ctrl.done(); g.setTimeout(resolve, 180); }
       })();
-    }).then(function () {
-      var res = SCS.engine.analyze(input);
+    }).then(async function () {
+      var res = await SCS.engine.analyzeWithTransformer(input);
+
       show(proc, false);
       ST.get.lastResult = res;
       ST.get.statuses = { clicked: false, shared: false, paid: false };
@@ -833,6 +834,7 @@
 
     host.appendChild(aboutCard("about.purpose.t", el("p", { text: t("about.purpose.d") })));
     host.appendChild(aboutCard("about.algo.t", el("p", { text: t("about.algo.d") })));
+    host.appendChild(aboutCard("about.transformer.t", el("p", { text: t("about.transformer.d") })));
     host.appendChild(aboutCard("about.data.t", el("p", { text: t("about.data.d", { total: ds.total, scam: ds.scam, safe: ds.safe, vi: ds.vi, en: ds.en }) })));
 
     var metricsBody = el("div", { class: "scs-metrics" });

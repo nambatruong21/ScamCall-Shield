@@ -132,6 +132,67 @@
       externalSources: []
     };
   }
+  async function analyzeWithTransformer(input) {
+  var result = analyze(input);
 
-  g.SCS.engine = { analyze: analyze, actionsFor: actionsFor, SAFE_REPLY: SAFE_REPLY };
+  var text = String(
+    (input && (input.extractedText || input.rawText)) || ""
+  ).trim();
+
+  result.components = result.components || {};
+  result.components.transformer = null;
+  result.components.transformerAvailable = false;
+
+  if (
+    !text ||
+    !g.SCS.transformer ||
+    typeof g.SCS.transformer.predictScam !== "function"
+  ) {
+    return result;
+  }
+
+  try {
+    var ai = await g.SCS.transformer.predictScam(text);
+
+    if (
+      ai &&
+      ai.available &&
+      typeof ai.scamProbability === "number"
+    ) {
+      result.components.transformer =
+        Math.round(ai.scamProbability * 100);
+
+      result.components.transformerAvailable = true;
+      result.components.transformerModel = ai.model || null;
+      var boosted = g.SCS.fusion.applyTransformerBoost(
+      result.overallScore,
+      result.components.transformer
+    );
+
+      result.components.baseScore = result.overallScore;
+      result.components.transformerBoost = boosted.boost;
+
+      result.overallScore = boosted.score;
+      result.riskLevel = g.SCS.fusion.riskLevel(result.overallScore);
+      result.actions = actionsFor(
+      result.topType,
+      result.riskLevel,
+      {}
+    );
+    }
+  } catch (err) {
+    console.warn(
+      "[ScamCall Shield] Transformer shadow inference failed:",
+      err
+    );
+  }
+
+  return result;
+}
+  g.SCS.engine = {
+  analyze: analyze,
+  analyzeWithTransformer: analyzeWithTransformer,
+  actionsFor: actionsFor,
+  SAFE_REPLY: SAFE_REPLY
+};
 })(typeof window !== "undefined" ? window : globalThis);
