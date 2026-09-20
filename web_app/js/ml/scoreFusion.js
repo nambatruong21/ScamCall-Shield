@@ -50,6 +50,41 @@
     if (score >= 25) return "medium";
     return "low";
   }
+  function applyTransformerBoost(baseScore, transformerScore) {
+  var base = Number(baseScore);
+  var transformer = Number(transformerScore);
+
+  if (!isFinite(base)) base = 0;
+  if (!isFinite(transformer)) transformer = 0;
+
+  base = Math.max(0, Math.min(100, base));
+  transformer = Math.max(0, Math.min(100, transformer));
+
+  // Transformer is only a corroborating signal.
+  // It can raise an already-suspicious score, but never lower it.
+  if (base < 50 || transformer < 80) {
+    return {
+      score: Math.round(base),
+      boost: 0
+    };
+  }
+
+  // Medium-risk cases get at most +5.
+  // High/critical candidates get at most +10.
+  // Transformer only corroborates cases that are already high-risk.
+  var maxBoost = 10;
+
+  var boost = Math.round(
+    ((transformer - 80) / 20) * maxBoost
+  );
+
+  boost = Math.max(0, Math.min(maxBoost, boost));
+
+  return {
+    score: Math.min(100, Math.round(base + boost)),
+    boost: boost
+  };
+}
 
   /**
    * fuse(text, ruleResult, indicatorScore) -> AnalysisResult core
@@ -105,5 +140,5 @@
     };
   }
 
-  g.SCS.fusion = { fuse: fuse, riskLevel: riskLevel, WEIGHTS: WEIGHTS };
+  g.SCS.fusion = { fuse: fuse, riskLevel: riskLevel, applyTransformerBoost: applyTransformerBoost, WEIGHTS: WEIGHTS };
 })(typeof window !== "undefined" ? window : globalThis);

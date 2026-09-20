@@ -289,7 +289,7 @@
       rows.push({
         key: "why.transformer",
         val: c.transformer,
-        shadow: true
+        boost: c.transformerBoost || 0
       });
     }
     var wrap = el("div", { class: "scs-why" });
@@ -298,7 +298,7 @@
       wrap.appendChild(el("div", { class: "scs-why__row" },
         el("div", { class: "scs-why__label" },
           el("span", { text: t(r.key) }),
-          el("span", { class: "scs-why__wt scs-mono", text: r.shadow ? t("why.shadow") : t("why.weight", { w: Math.round(r.wt * 100) }) })
+          el("span", { class: "scs-why__wt scs-mono", text: r.key === "why.transformer" ? t("why.boost", { b: r.boost || 0 }) : t("why.weight", { w: Math.round(r.wt * 100) }) })
         ),
         el("div", { class: "scs-bar scs-bar--thin" }, el("span", { class: "scs-bar__fill", style: { width: v + "%" } })),
         el("span", { class: "scs-why__val scs-mono", text: String(v) })

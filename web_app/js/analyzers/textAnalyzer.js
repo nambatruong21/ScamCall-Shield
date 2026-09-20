@@ -164,6 +164,21 @@
 
       result.components.transformerAvailable = true;
       result.components.transformerModel = ai.model || null;
+      var boosted = g.SCS.fusion.applyTransformerBoost(
+      result.overallScore,
+      result.components.transformer
+    );
+
+      result.components.baseScore = result.overallScore;
+      result.components.transformerBoost = boosted.boost;
+
+      result.overallScore = boosted.score;
+      result.riskLevel = g.SCS.fusion.riskLevel(result.overallScore);
+      result.actions = actionsFor(
+      result.topType,
+      result.riskLevel,
+      {}
+    );
     }
   } catch (err) {
     console.warn(

@@ -250,7 +250,7 @@
     "why.ind": "Link / QR / file / phone indicators",
     "why.ctx": "Content context",
     "why.transformer": "Transformer AI (XLM-R phishing)",
-    "why.shadow": "shadow mode — not included in final score",
+    "why.boost": "boost applied: +{b} points",
     "why.weight": "weight {w}%",
     "why.noml": "ML model failed to load — the score relies on the rule engine and indicators.",
 

@@ -250,7 +250,7 @@
     "why.ind": "Chỉ báo link / QR / tệp / SĐT",
     "why.ctx": "Bối cảnh nội dung",
     "why.transformer": "Transformer AI (XLM-R phishing)",
-    "why.shadow": "chế độ thử nghiệm — chưa tính vào điểm cuối",
+    "why.boost": "đã cộng +{b} điểm vào điểm cuối",
     "why.weight": "trọng số {w}%",
     "why.noml": "Model ML chưa tải được — điểm dựa trên rule engine và chỉ báo.",
 
