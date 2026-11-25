@@ -164,3 +164,24 @@ Prompt logs are available in `prompts/`.
 *ScamCall Shield helps identify warning signs; it does not definitively establish whether
 content is safe or fraudulent. When in doubt: stop, do not share OTPs or passwords,
 do not transfer money, and verify through official channels.*
+
+## Chrome Extension
+
+ScamCall Shield is also available as a Chrome extension for local testing.
+
+**Download the latest version:**  
+https://github.com/nambatruong21/ScamCall-Shield/releases/latest
+
+### Installation
+
+1. Download the latest extension ZIP from the Releases page.
+2. Extract the ZIP file.
+3. Open Google Chrome and go to `chrome://extensions/`.
+4. Enable **Developer mode**.
+5. Click **Load unpacked**.
+6. Select the extracted folder that directly contains `manifest.json`.
+7. Pin **ScamCall Shield** from the Chrome Extensions menu for easier access.
+
+> If Chrome shows “Manifest file is missing or unreadable,” select the parent folder that directly contains `manifest.json`.
+
+The Chrome extension is intended for experimental and research use.
