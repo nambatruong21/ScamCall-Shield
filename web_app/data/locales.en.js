@@ -316,8 +316,8 @@
     "about.refs.t": "Technical references",
     "about.version": "Model version {v} · trained {d} · {f} features",
 
-    "footer.tag": "Built for the Vibe Coding Challenge — 100% front-end.",
-    "footer.priv": "Private by default · No backend · Readable source",
+    "footer.tag": "ScamCall Shield · Built to make suspicious messages easier to understand",
+    "footer.priv": "AI inference runs in your browser · No raw message content is stored",
 
     "toast.copied": "Copied to clipboard",
     "toast.exported": "File downloaded",
