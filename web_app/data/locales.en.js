@@ -36,7 +36,7 @@
     "consent.note": "Nothing is saved by default. You can wipe everything anytime.",
 
     "text.placeholder": "Paste the suspicious SMS, email or chat message here",
-    "text.hint": "Up to {max} characters. Content never leaves your browser.",
+    "text.hint": "Up to 10,000 characters. Content never leaves your browser.",
     "text.lang": "Content language", "text.lang.auto": "Auto-detect",
     "text.empty": "Paste or type some content before analyzing.",
 

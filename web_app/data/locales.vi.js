@@ -36,7 +36,7 @@
     "consent.note": "Mặc định không lưu gì. Bạn có thể xóa toàn bộ bất cứ lúc nào.",
 
     "text.placeholder": "Dán tin nhắn SMS, email, Zalo, Messenger… đáng ngờ vào đây",
-    "text.hint": "Tối đa {max} ký tự. Nội dung không rời khỏi trình duyệt của bạn.",
+    "text.hint": "Tối đa 10.000 ký tự. Nội dung không rời khỏi trình duyệt của bạn.",
     "text.lang": "Ngôn ngữ nội dung", "text.lang.auto": "Tự nhận diện",
     "text.empty": "Hãy dán hoặc nhập nội dung trước khi phân tích.",
 
@@ -317,8 +317,8 @@
     "about.refs.t": "Tham khảo kỹ thuật",
     "about.version": "Phiên bản model {v} · huấn luyện {d} · {f} đặc trưng",
 
-    "footer.tag": "Dự án dự thi Vibe Coding Challenge — chạy 100% front-end.",
-    "footer.priv": "Riêng tư mặc định · Không backend · Mã nguồn dễ đọc",
+    "footer.tag": "ScamCall Shield · Giúp bạn hiểu rõ hơn các tin nhắn đáng ngờ",
+    "footer.priv": "AI chạy ngay trong trình duyệt · Nội dung gốc không được gửi lên máy chủ",
 
     "toast.copied": "Đã sao chép vào clipboard",
     "toast.exported": "Đã tải tệp xuống",
