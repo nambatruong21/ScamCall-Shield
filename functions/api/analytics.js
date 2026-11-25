@@ -111,6 +111,9 @@ export async function onRequestPost(context) {
     const analysisId =
       cleanString(body.analysis_id, 80);
 
+    const anonymousId =
+      cleanString(body.anonymous_id, 80);
+
     const inputType =
       cleanString(body.input_type, 30);
 
@@ -186,11 +189,12 @@ export async function onRequestPost(context) {
           outcome,
           source
         )
-        VALUES (?, ?, NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'public_web')
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'public_web')
       `)
       .bind(
         eventType,
         analysisId,
+        anonymousId,
         inputType,
         language,
         riskLevel,

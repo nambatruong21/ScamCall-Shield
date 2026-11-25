@@ -164,13 +164,39 @@
         else { ctrl.done(); g.setTimeout(resolve, 180); }
       })();
     }).then(async function () {
-      var res = await SCS.engine.analyzeWithTransformer(input);
+var res = await SCS.engine.analyzeWithTransformer(input);
 
-      show(proc, false);
-      ST.get.lastResult = res;
-      ST.get.statuses = { clicked: false, shared: false, paid: false };
-      renderResult(res);
-      return res;
+show(proc, false);
+ST.get.lastResult = res;
+ST.get.statuses = { clicked: false, shared: false, paid: false };
+renderResult(res);
+
+/* Anonymous analytics — never sends raw message content */
+if (SCS.analytics) {
+  SCS.analytics.send("analysis_completed", {
+    analysisId: res.id,
+    inputType: res.sourceType,
+    language: I.getLang(),
+
+    riskLevel: res.riskLevel,
+    riskScore: res.overallScore,
+
+    scamType: res.topType,
+
+    transformerUsed:
+      !!(
+        res.components &&
+        res.components.transformerAvailable
+      ),
+
+    transformerBoost:
+      res.components
+        ? (res.components.transformerBoost || 0)
+        : 0
+  });
+}
+
+return res;
     });
   }
 
