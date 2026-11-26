@@ -40,13 +40,13 @@
   var THEME_KEY = "scs_theme";
   function initTheme() {
     var saved = null;
-    try { saved = g.localStorage.getItem(THEME_KEY); } catch (e) {}
+    try { saved = g.localStorage.getItem(THEME_KEY); } catch (e) { }
     var theme = saved || ((g.matchMedia && g.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light");
     applyTheme(theme);
     on($("scs-theme-toggle"), "click", function () {
       var next = doc.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
       applyTheme(next);
-      try { g.localStorage.setItem(THEME_KEY, next); } catch (e) {}
+      try { g.localStorage.setItem(THEME_KEY, next); } catch (e) { }
     });
   }
   function applyTheme(theme) {
@@ -164,39 +164,39 @@
         else { ctrl.done(); g.setTimeout(resolve, 180); }
       })();
     }).then(async function () {
-var res = await SCS.engine.analyzeWithTransformer(input);
+      var res = await SCS.engine.analyzeWithTransformer(input);
 
-show(proc, false);
-ST.get.lastResult = res;
-ST.get.statuses = { clicked: false, shared: false, paid: false };
-renderResult(res);
+      show(proc, false);
+      ST.get.lastResult = res;
+      ST.get.statuses = { clicked: false, shared: false, paid: false };
+      renderResult(res);
 
-/* Anonymous analytics — never sends raw message content */
-if (SCS.analytics) {
-  SCS.analytics.send("analysis_completed", {
-    analysisId: res.id,
-    inputType: res.sourceType,
-    language: I.getLang(),
+      /* Anonymous analytics — never sends raw message content */
+      if (SCS.analytics) {
+        SCS.analytics.send("analysis_completed", {
+          analysisId: res.id,
+          inputType: res.sourceType,
+          language: I.getLang(),
 
-    riskLevel: res.riskLevel,
-    riskScore: res.overallScore,
+          riskLevel: res.riskLevel,
+          riskScore: res.overallScore,
 
-    scamType: res.topType,
+          scamType: res.topType,
 
-    transformerUsed:
-      !!(
-        res.components &&
-        res.components.transformerAvailable
-      ),
+          transformerUsed:
+            !!(
+              res.components &&
+              res.components.transformerAvailable
+            ),
 
-    transformerBoost:
-      res.components
-        ? (res.components.transformerBoost || 0)
-        : 0
-  });
-}
+          transformerBoost:
+            res.components
+              ? (res.components.transformerBoost || 0)
+              : 0
+        });
+      }
 
-return res;
+      return res;
     });
   }
 
@@ -286,7 +286,76 @@ return res;
 
     /* score breakdown */
     card.appendChild(el("section", { class: "scs-result__sec" }, sectionH("why.title"), UI.whyBlock(result.components)));
+    /* helpful feedback */
+    var feedbackWrap = el("div", { class: "scs-row scs-row--wrap" });
 
+    var helpfulBtn = el("button", {
+      type: "button",
+      class: "scs-btn scs-btn--secondary",
+      text: t("feedback.yes")
+    });
+
+    var notHelpfulBtn = el("button", {
+      type: "button",
+      class: "scs-btn scs-btn--ghost",
+      text: t("feedback.no")
+    });
+
+    var feedbackThanks = el("p", {
+      class: "scs-note",
+      text: ""
+    });
+
+    function submitFeedback(helpful) {
+      helpfulBtn.disabled = true;
+      notHelpfulBtn.disabled = true;
+
+      feedbackThanks.textContent = t("feedback.thanks");
+
+      if (SCS.analytics) {
+        SCS.analytics.send(
+          helpful ? "feedback_helpful" : "feedback_not_helpful",
+          {
+            analysisId: result.id,
+            inputType: result.sourceType,
+            language: I.getLang(),
+            riskLevel: result.riskLevel,
+            riskScore: result.overallScore,
+            scamType: result.topType,
+            transformerUsed: !!(
+              result.components &&
+              result.components.transformerAvailable
+            ),
+            transformerBoost:
+              result.components
+                ? (result.components.transformerBoost || 0)
+                : 0,
+            feedbackValue: helpful ? "helpful" : "not_helpful"
+          }
+        );
+      }
+    }
+
+    on(helpfulBtn, "click", function () {
+      submitFeedback(true);
+    });
+
+    on(notHelpfulBtn, "click", function () {
+      submitFeedback(false);
+    });
+
+    feedbackWrap.appendChild(helpfulBtn);
+    feedbackWrap.appendChild(notHelpfulBtn);
+
+    card.appendChild(
+      el(
+        "section",
+        { class: "scs-result__sec" },
+        sectionH("feedback.title"),
+        feedbackWrap,
+        feedbackThanks
+      )
+    );
     /* export / actions bar */
     var bar = el("div", { class: "scs-result__bar" });
     if (fam && g.speechSynthesis) {
@@ -387,7 +456,7 @@ return res;
     UI.toast("toast.exported");
   }
 
-  function saveHistory(r) { try { ST.history.save(r); } catch (e) {} }
+  function saveHistory(r) { try { ST.history.save(r); } catch (e) { } }
   function saveIfConsent(r) { var c = $("scs-consent"); if (c && c.checked) saveHistory(r); }
 
   /* =====================================================================
@@ -539,7 +608,7 @@ return res;
         var data = SCS.image.getImageData(info.ctx, info.w, info.h, null);
         var qr = SCS.image.decodeQR(data);
         applyQR(qr);
-      } catch (e) {}
+      } catch (e) { }
     }).catch(function () { UI.toast("toast.badImage"); });
   }
   function applyQR(qr) {
@@ -592,7 +661,7 @@ return res;
     try {
       var data = SCS.image.getImageData(imgState.ctx, imgState.w, imgState.h, imgState.rect);
       applyQR(SCS.image.decodeQR(data));
-    } catch (e) {}
+    } catch (e) { }
     SCS.image.ocr(imgState.canvas, imgState.rect, function (p) {
       prog.textContent = t("image.ocr.progress", { pct: Math.round(p * 100) });
     }).then(function (res) {
@@ -799,8 +868,8 @@ return res;
     var host = $("scs-tips"); if (!host) return;
     D.clear(host);
     [["tips.student", ["tips.student.1", "tips.student.2", "tips.student.3"]],
-     ["tips.parent", ["tips.parent.1", "tips.parent.2", "tips.parent.3"]],
-     ["tips.shop", ["tips.shop.1", "tips.shop.2", "tips.shop.3"]]].forEach(function (grp) {
+    ["tips.parent", ["tips.parent.1", "tips.parent.2", "tips.parent.3"]],
+    ["tips.shop", ["tips.shop.1", "tips.shop.2", "tips.shop.3"]]].forEach(function (grp) {
       var ul = el("ul", { class: "scs-tip__list" });
       grp[1].forEach(function (k) { ul.appendChild(el("li", { text: t(k) })); });
       host.appendChild(el("div", { class: "scs-tip" }, el("h4", { class: "scs-tip__h", text: t(grp[0]) }), ul));

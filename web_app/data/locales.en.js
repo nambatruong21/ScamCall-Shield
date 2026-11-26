@@ -259,6 +259,10 @@
     "result.another": "Analyze something else", "result.read": "Read result aloud",
     "result.read.stop": "Stop reading",
     "result.redacted.note": "Exported reports mask OTPs, account numbers and phone numbers.",
+    "feedback.title": "Was this result helpful?",
+    "feedback.yes": "Yes, helpful",
+    "feedback.no": "Not helpful",
+    "feedback.thanks": "Thank you! Your feedback helps improve ScamCall Shield.",
     "result.disclaimer": "ScamCall Shield helps you spot risk signals; it cannot guarantee content is safe or fraudulent. Never share OTPs or passwords or transfer money on unverified requests — confirm through official channels.",
 
     "learn.title": "Learn in 2 minutes",
